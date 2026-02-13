@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>✨ Valentine Experience ✨</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    
+    <!-- Solo una hoja de estilos principal (unificada) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Las otras hojas de estilo pueden eliminarse o dejarse vacías -->
+</head>
+<body>
+
+<main class="container">
+    <!-- ===== PANTALLA 1: CARRUSEL 3D CON TUS FOTOS ===== -->
+    <section class="screen active" data-screen="1" id="valentine-carousel">
+        <div class="carousel-panel">
+            <div class="grid">
+                <div class="stage" data-stage>
+                    <div class="world" data-world>
+                        <div class="halo"></div>
+                        <div class="cloud" data-cloud></div>
+                    </div>
+                    <div class="hintL">Arrastra para rotar</div>
+                    <div class="hintR">Pausa al pasar mouse</div>
+                </div>
+
+                <aside class="side">
+                    <div class="sidePad">
+                        <p class="kicker">❤️ Nuestros momentos</p>
+                        <h2 class="h2" data-title>Contigo, cada instante es único</h2>
+                        <p class="sub" data-desc>
+                            Pequeños fragmentos de nuestra historia, capturados en imágenes que guardan la magia de lo que compartimos.
+                        </p>
+                        <div class="featureFrame">
+                            <img data-feature-img loading="lazy" alt="Foto destacada">
+                        </div>
+                        <div class="actions">
+                            <button class="btn btnPrimary" data-open>Ver en grande</button>
+                            <button class="btn" data-next-photo>Siguiente recuerdo</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Lightbox del carrusel 3D -->
+        <div class="lb" data-lb>
+            <div class="lbShell">
+                <div class="lbTop">
+                    <p class="lbTitle" data-lb-title>Nuestra foto</p>
+                    <button class="lbClose" data-lb-close>Cerrar</button>
+                </div>
+                <div class="lbMedia">
+                    <div class="lbLoader" data-lb-loader></div>
+                    <img data-lb-img loading="lazy" alt="Ampliación">
+                </div>
+            </div>
+        </div>
+
+<button class="next-btn" data-next="2" aria-label="Siguiente">→</button>
+    </section>
+
+    <!-- ===== PANTALLA 2: GALAXIA + TYPEWRITER ===== -->
+    <section class="screen" data-screen="2" id="screen2">
+        <canvas id="galaxyCanvas"></canvas>
+        <div class="content">
+            <div class="typewriter-container">
+                <h1 id="typewriter-text"></h1>
+                <span class="cursor">|</span>
+            </div>
+            <div class="p2-actions">
+                <button class="btn btn-ghost" id="show-carousel">✨ Mira nuestros recuerdos</button>
+            </div>
+<button class="next-btn pulse" data-next="3" aria-label="Siguiente">→</button>
+        </div>
+    </section>
+
+    <!-- ===== PANTALLA 3: MÚSICA + ECG ===== -->
+    <section class="screen" data-screen="3" id="screen3">
+        <div class="p3-bg">
+            <div class="p3-header">
+                <h2 class="p3-title">Mi corazón late solo por ti</h2>
+                <div class="heart-icon">❤️</div>
+            </div>
+            <div class="ekg-container">
+                <div class="ekg">
+                    <div class="ekg-line"></div>
+                    <div class="ekg-scan"></div>
+                </div>
+            </div>
+            <p class="p3-sub">Escucha… esta canción siempre me recuerda a nosotros.</p>
+            <div class="audio-box">
+                <audio id="bgAudio" src="assets/audio/song.mp3" preload="auto" loop></audio>
+                <button class="ghostBtn" id="audioPlayBtn">
+                    <span class="icon">▶</span> Activar música
+                </button>
+            </div>
+        </div>
+<button class="nextBtn bounce" data-next="4" aria-label="Siguiente">↓</button>
+    </section>
+
+    <!-- ===== PANTALLA 4: CARTA ROMÁNTICA ===== -->
+    <section class="screen" data-screen="4" id="screen4">
+        <div class="p4-bg">
+            <div class="envelope-wrapper">
+                <div class="letter">
+                    <div class="letter-content">
+                        <h2>Para ti...</h2>
+                        <p class="letter-text">
+                            Desde que llegaste a mi vida, cada día tiene un brillo diferente. 
+                            No solo te has convertido en mi persona favorita, sino en mi refugio y mi mayor alegría. 
+                            <br><br>
+                            Gracias por cada sonrisa compartida, por los momentos difíciles donde me diste tu mano y por enseñarme lo que significa querer de verdad. 
+                            <br><br>
+                            Eres la magia que no sabía que necesitaba y hoy quiero decirte que...
+                        </p>
+                        <div class="letter-footer">
+                            <button class="heartCta" data-next="5" aria-label="Continuar">
+                                ❤️ <span>Haz click aquí</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PANTALLA 5: PREGUNTA FINAL ===== -->
+    <section class="screen" data-screen="5" id="screen5">
+        <div id="confetti-wrapper"></div>
+        <div class="p5-content">
+            <h1 class="p5-title">¿Quieres ser mi San Valentín?</h1>
+            <div class="p5-img">❤️</div>
+            <div class="options-container">
+                <button id="btn-si" class="btn-vote">¡SÍ! 😍</button>
+                <button id="btn-no" class="btn-vote">No 😢</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PANTALLA 6: TICKET FINAL ===== -->
+    <section class="screen" data-screen="6" id="screen6">
+        <div class="ticket-container">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h3>ADMIT ONE</h3>
+                    <p>Valentine's Special</p>
+                </div>
+                <div class="ticket-body">
+                    <div class="ticket-info">
+                        <span class="label">INVITADOS:</span>
+                        <span class="val">Gaby & Matth</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span class="label">FECHA:</span>
+                        <span class="val">14 de Febrero, 2026</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span class="label">LUGAR:</span>
+                        <span class="val">Quito, Ecuador</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span class="label">DESCRIPCIÓN:</span>
+                        <span class="val">Cita mágica de San Valentín</span>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <a href="https://wa.link/6jwcan" target="_blank" class="wa-link">
+                        Confirmar por WhatsApp 💌
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Scripts externos -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+<!-- Tus scripts (deben estar en orden) -->
+<script src="js/app.js"></script> 
+<script src="js/carrusel.js"></script>
+<script src="js/galaxy.js"></script>
+<script src="js/typewriter.js"></script>
+<script src="js/corazon.js"></script>
+<script src="js/carta.js"></script>
+<script src="js/final.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+#screen3 {
+    background: #0a0000; /* Negro profundo con matiz rojizo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.p3-header {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.p3-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.heart-icon {
+    font-size: 2rem;
+    animation: heartBeat 1.2s infinite;
+}
+
+/* Animación de latido real */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+/* Contenedor del ECG */
+.ekg-container {
+    width: 100%;
+    max-width: 600px;
+    height: 150px;
+    position: relative;
+    margin: 40px 0;
+    overflow: hidden;
+}
+
+.ekg-line {
+    width: 100%;
+    height: 100%;
+    background: url('https://i.imgur.com/vHq05YF.png') repeat-x; /* Puedes usar un SVG o imagen de línea ECG */
+    background-size: contain;
+    filter: drop-shadow(0 0 8px #ff4d6d);
+}
+
+.ekg-scan {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to right, #0a0000 0%, transparent 10%, transparent 90%, #0a0000 100%);
+    animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+.ghostBtn {
+    background: rgba(255, 77, 109, 0.1);
+    border: 2px solid #ff4d6d;
+    color: #fff;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ghostBtn:hover {
+    background: #ff4d6d;
+    box-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
+}
+
+.nextBtn {
+    position: absolute;
+    bottom: 30px;
+    background: none;
+    border: none;
+    color: #ff4d6d;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}

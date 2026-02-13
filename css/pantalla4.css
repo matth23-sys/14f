@@ -1,0 +1,81 @@
+#screen4 {
+    background: #fff0f3; /* Rosa pastel muy suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.p4-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.letter {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 2px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 1s ease-out;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 20px 20px; /* Sutil efecto de textura de papel */
+}
+
+/* Cuando la pantalla es visible, la carta "sube" */
+.letter.reveal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.letter h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #ff4d6d;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #ffb3c1;
+    display: inline-block;
+}
+
+.letter-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #444;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.letter-footer {
+    text-align: center;
+}
+
+.heartCta {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.heartCta:hover {
+    background: #c9184a;
+    transform: scale(1.1);
+}
+
+.heartCta span {
+    font-family: 'Poppins', sans-serif;
+}

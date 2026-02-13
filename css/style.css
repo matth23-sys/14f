@@ -1,0 +1,1026 @@
+/* ===============================
+   VARIABLES GLOBALES
+=============================== */
+:root {
+    /* Colores base */
+    --bg-dark: #0a0a1a;
+    --accent: #ff69b4;
+    --accent-dark: #ff1493;
+    --text: #fff0f5;
+    --muted: rgba(255, 255, 255, 0.78);
+    --line: rgba(255, 255, 255, 0.14);
+
+    /* Sombras */
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --border-light: 1px solid rgba(255, 255, 255, 0.2);
+    --transition: all 0.3s ease;
+
+    /* Variables para carrusel 3D */
+    --love-dark: #1a0b1a;
+    --love-rose: #ffb6c1;
+    --love-gold: #ff99cc;
+    --love-shadow: 0 44px 160px rgba(255, 105, 180, 0.3);
+    --radius: 26px;
+
+    /* Padding común */
+    --pad: clamp(14px, 4vw, 28px);
+}
+
+/* ===============================
+   RESET Y ESTILOS BASE
+=============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    overflow: hidden; /* Scroll nativo desactivado, usamos contenedor */
+    line-height: 1.5;
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* ===============================
+   CONTENEDOR PRINCIPAL (SCROLL SNAP)
+=============================== */
+.container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.screen {
+    scroll-snap-align: start;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: radial-gradient(1200px 700px at 50% -10%, rgba(255, 105, 180, 0.14), transparent 60%),
+                radial-gradient(900px 600px at 80% 120%, rgba(120, 70, 255, 0.14), transparent 60%),
+                linear-gradient(180deg, #050308 0%, #070312 55%, #020104 100%);
+}
+
+/* ===============================
+   COMPONENTES COMUNES
+=============================== */
+/* Botones "Siguiente" (unificamos next-btn y nextBtn) */
+/* ===============================
+   COMPONENTES COMUNES
+=============================== */
+/* Botones "Siguiente" más pequeños y a la derecha */
+.next-btn, .nextBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    left: auto;
+    transform: none;
+    background: rgba(255, 105, 180, 0.3);
+    border: 2px solid var(--accent);
+    color: white;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    transition: var(--transition);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+}
+
+.next-btn:hover, .nextBtn:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--accent);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .next-btn, .nextBtn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+/* Botones genéricos (btn) */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 2px solid var(--accent);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 105, 180, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+}
+
+/* ===============================
+   PANTALLA 1: CARRUSEL 3D (ID valentine-carousel)
+=============================== */
+#valentine-carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#valentine-carousel .carousel-panel {
+    width: 90%;
+    max-width: 1200px;
+    border-radius: calc(var(--radius) + 18px);
+    border: 1px solid rgba(255, 200, 220, 0.3);
+    background: linear-gradient(145deg, rgba(255, 200, 220, 0.1), rgba(50, 20, 30, 0.5));
+    box-shadow: var(--love-shadow);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    margin: 20px auto;
+}
+
+#valentine-carousel .grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(16px, 2.6vw, 28px);
+    padding: clamp(14px, 2.2vw, 22px);
+}
+
+@media (max-width: 1027px) {
+    #valentine-carousel .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#valentine-carousel .stage {
+    position: relative;
+    min-height: clamp(540px, 74vh, 760px);
+    padding: clamp(22px, 3.2vh, 44px) 14px;
+    border-radius: calc(var(--radius) + 10px);
+    border: 1px solid rgba(255, 200, 220, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1700px;
+    user-select: none;
+    touch-action: none;
+    background: radial-gradient(1100px 680px at 50% 55%, rgba(255, 150, 180, 0.2), rgba(0, 0, 0, 0.6));
+}
+
+#valentine-carousel .world {
+    position: relative;
+    width: min(680px, 100%);
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+#valentine-carousel .halo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 72%;
+    height: 72%;
+    transform: translate(-50%, -50%) translateZ(-320px);
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.3), transparent 70%);
+    filter: blur(30px);
+}
+
+#valentine-carousel .cloud {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+#valentine-carousel .tile {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+#valentine-carousel .card {
+    width: clamp(86px, 10.6vw, 134px);
+    height: clamp(122px, 14.9vw, 196px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 182, 193, 0.6);
+    background: rgba(255, 200, 220, 0.2);
+    box-shadow: 0 18px 64px rgba(255, 105, 180, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#valentine-carousel .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.4) contrast(1.1) brightness(1.1);
+    transition: filter 0.2s;
+}
+
+#valentine-carousel .tile[data-active="true"] .card {
+    border-color: #ff69b4;
+    box-shadow: 0 30px 110px rgba(255, 20, 147, 0.6), 0 0 0 3px rgba(255, 105, 180, 0.4);
+}
+
+#valentine-carousel .tile[data-active="true"] .card img {
+    filter: grayscale(0) contrast(1.1) brightness(1.1);
+}
+
+#valentine-carousel .hintL,
+#valentine-carousel .hintR {
+    position: absolute;
+    bottom: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    z-index: 9;
+}
+
+#valentine-carousel .hintL { left: 14px; }
+#valentine-carousel .hintR { right: 14px; }
+
+#valentine-carousel .side {
+    border-radius: calc(var(--radius) + 10px);
+    border: 1px solid rgba(255, 200, 220, 0.2);
+    background: radial-gradient(900px 520px at 20% 10%, rgba(255, 182, 193, 0.2), rgba(0, 0, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+#valentine-carousel .sidePad {
+    padding: clamp(16px, 2.2vw, 22px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+#valentine-carousel .kicker {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffb6c1;
+    margin: 0;
+    font-size: 1.06rem;
+}
+
+#valentine-carousel .h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: clamp(1.8rem, 2.7vw, 2.5rem);
+    color: white;
+    text-shadow: 0 0 10px #ff69b4;
+    margin: 0;
+}
+
+#valentine-carousel .sub {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.06rem;
+    margin: 0;
+}
+
+#valentine-carousel .featureFrame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 200, 220, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 28px 110px rgba(255, 105, 180, 0.3);
+}
+
+#valentine-carousel .featureFrame img {
+    width: 100%;
+    height: clamp(240px, 28vw, 360px);
+    object-fit: cover;
+    display: block;
+}
+
+#valentine-carousel .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 10px;
+    justify-content: center;
+}
+
+#valentine-carousel .btn {
+    border-radius: 40px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 182, 193, 0.2);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.06rem;
+    cursor: pointer;
+    transition: 0.2s;
+    backdrop-filter: blur(5px);
+}
+
+#valentine-carousel .btnPrimary {
+    border-color: #ff69b4;
+    background: linear-gradient(145deg, #ffb6c1, #ff69b4);
+    color: #1a0b1a;
+}
+
+#valentine-carousel .btn:hover {
+    transform: translateY(-2px);
+    border-color: #ff1493;
+}
+
+/* Lightbox del carrusel 3D */
+#valentine-carousel .lb {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+#valentine-carousel .lb[data-open="true"] {
+    display: flex;
+}
+
+#valentine-carousel .lbShell {
+    width: min(1120px, 92vw);
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 200, 220, 0.3);
+    background: #1a0b1a;
+    box-shadow: 0 44px 140px rgba(255, 105, 180, 0.5);
+}
+
+#valentine-carousel .lbTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 200, 220, 0.2);
+    background: rgba(255, 182, 193, 0.1);
+}
+
+#valentine-carousel .lbTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+#valentine-carousel .lbClose {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 182, 193, 0.2);
+    color: white;
+    border-radius: 999px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+#valentine-carousel .lbMedia {
+    position: relative;
+    min-height: 56vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+#valentine-carousel .lbMedia img {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+#valentine-carousel .lbMedia img[data-ready="true"] {
+    opacity: 1;
+}
+
+#valentine-carousel .lbLoader {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ff69b4;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===============================
+   PANTALLA 2: TEXTO + CARRUSEL
+=============================== */
+#screen2 {
+    position: relative;
+}
+
+#galaxyCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: block;
+}
+
+#screen2 .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+    border: var(--border-light);
+    padding: 30px;
+}
+
+.typewriter-container {
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: white;
+    text-shadow: 0 0 10px var(--accent);
+}
+
+#typewriter-text {
+    display: inline;
+    margin-right: 5px;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    font-weight: 300;
+    color: var(--accent);
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.p2-actions {
+    margin: 20px 0;
+}
+
+#show-carousel {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border-radius: 40px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 0 20px var(--accent);
+}
+
+#show-carousel:hover {
+    transform: scale(1.05);
+    background: var(--accent-dark);
+}
+
+/* ===============================
+   PANTALLA 3: MÚSICA + ECG
+=============================== */
+.p3-bg {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    border: var(--border-light);
+    box-shadow: var(--shadow);
+}
+
+.p3-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.p3-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: white;
+    text-shadow: 0 0 15px var(--accent);
+}
+
+.heart-icon {
+    font-size: 2.5rem;
+    animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.ekg-container {
+    margin: 30px 0;
+}
+
+.ekg {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.6), 0 0 40px rgba(120, 70, 255, 0.18);
+}
+
+.ekg-line {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0 2%, rgba(255, 255, 255, 0.06) 2% 2.6%, transparent 2.6% 5%) repeat;
+    background-size: 60px 100%;
+    opacity: 0.55;
+}
+
+.ekg-scan {
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 120, 200, 0.22), rgba(120, 70, 255, 0.18), transparent);
+    animation: ekgScan 2.2s linear infinite;
+}
+
+@keyframes ekgScan {
+    to { left: 110%; }
+}
+
+.p3-sub {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: var(--muted);
+}
+
+.audio-box {
+    margin-top: 20px;
+}
+
+.ghostBtn {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ghostBtn:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+/* ===============================
+   PANTALLA 4: CARTA
+=============================== */
+.p4-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.envelope-wrapper {
+    width: 90%;
+    max-width: 700px;
+}
+
+.letter {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.3);
+}
+
+.letter-content {
+    text-align: center;
+}
+
+.letter-content h2 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.letter-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 30px;
+}
+
+.letter-footer {
+    margin-top: 20px;
+}
+
+.heartCta {
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 0 30px var(--accent);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heartCta:hover {
+    background: var(--accent-dark);
+    transform: scale(1.1);
+}
+
+/* ===============================
+   PANTALLA 5: PREGUNTA FINAL + CONFETI
+=============================== */
+#confetti-wrapper {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.p5-content {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--accent);
+    border-radius: 50px;
+    padding: 40px;
+    box-shadow: 0 0 60px var(--accent);
+    max-width: 800px;
+    width: 90%;
+    z-index: 20;
+    position: relative;
+}
+
+.p5-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px var(--accent);
+}
+
+.p5-img {
+    font-size: 5rem;
+    margin-bottom: 30px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.options-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-vote {
+    min-width: 180px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 0 30px currentColor;
+}
+
+#btn-si {
+    background: #28a745;
+    color: white;
+    box-shadow: 0 0 30px #28a745;
+}
+
+#btn-si:hover {
+    transform: scale(1.1);
+    background: #2ecc71;
+}
+
+#btn-no {
+    background: #dc3545;
+    color: white;
+    box-shadow: 0 0 20px #dc3545;
+    position: relative;
+}
+
+#btn-no:hover {
+    background: #ff4757;
+}
+
+/* ===============================
+   PANTALLA 6: TICKET
+=============================== */
+#screen6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-container {
+    width: 90%;
+    max-width: 500px;
+    perspective: 1000px;
+}
+
+.ticket {
+    background: linear-gradient(145deg, #2a1b3d, #1a0b2a);
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent);
+    transform: rotateY(0deg) rotateX(2deg);
+    transition: transform 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.ticket:hover {
+    transform: rotateY(2deg) rotateX(0deg);
+}
+
+.ticket-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed var(--accent);
+    padding-bottom: 15px;
+}
+
+.ticket-header h3 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: var(--accent);
+}
+
+.ticket-header p {
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+.ticket-body {
+    margin: 20px 0;
+}
+
+.ticket-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.ticket-info .label {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.ticket-info .val {
+    color: white;
+    text-align: right;
+}
+
+.ticket-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.wa-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 0 20px #25D366;
+}
+
+.wa-link:hover {
+    transform: scale(1.05);
+    background: #20b859;
+}
+
+/* ===============================
+   LIGHTBOX (para carrusel simple, si se usa)
+=============================== */
+.rc-lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 3, 12, 0.88);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 9999;
+}
+
+.rc-lightbox[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rc-lightbox-inner {
+    position: relative;
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 60px rgba(255, 120, 200, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rc-lightbox-inner img {
+    width: auto;
+    height: auto;
+    max-width: min(96vw, 900px);
+    max-height: min(96vh, 900px);
+    object-fit: contain;
+    display: block;
+}
+
+.rc-lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.rc-lightbox-close:hover {
+    transform: scale(1.08);
+    background: rgba(255, 120, 200, 0.85);
+}
+
+.rc-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+/* ===============================
+   CLASES AUXILIARES
+=============================== */
+.hidden {
+    display: none !important;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===============================
+   MEDIA QUERIES
+=============================== */
+@media (max-width: 768px) {
+    .next-btn, .nextBtn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+    }
+
+    .p5-title {
+        font-size: 2rem;
+    }
+
+    .btn-vote {
+        min-width: 140px;
+        padding: 15px 30px;
+        font-size: 1.5rem;
+    }
+
+    .ticket-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .ticket-info .val {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter-text {
+        font-size: 1rem;
+    }
+
+    .heartCta {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
+
+    .p3-title {
+        font-size: 1.5rem;
+    }
+
+    .p5-img {
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,117 @@
+/* Pantalla 5 */
+#screen5 {
+    background: #ffecf2;
+    overflow: hidden;
+}
+
+.p5-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ff4d6d;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.p5-img {
+    font-size: 5rem;
+    margin-bottom: 40px;
+    animation: pulse 1.5s infinite;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 200px;
+}
+
+#btn-si {
+    background: #ff4d6d;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+#btn-no {
+    background: #808080;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Pantalla 6 - Ticket */
+#screen6 {
+    background: #ff4d6d;
+}
+
+.ticket {
+    background: white;
+    color: #333;
+    padding: 0;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #fff;
+}
+
+.ticket-header {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.ticket-body {
+    padding: 25px;
+    border-bottom: 2px dashed #ff4d6d;
+}
+
+.ticket-info {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.7rem;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.val {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.ticket-footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.wa-link {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.wa-link:hover {
+    transform: scale(1.1);
+}
