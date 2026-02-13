@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <title>Valentine Experience 💘</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main id="app" class="app" aria-live="polite">
+
+    <section class="screen active" data-screen="1">
+      <section class="galaxy-section">
+        <canvas id="galaxyCanvas"></canvas>
+
+        <div class="overlay">
+          <h1>Nuestra Galaxia ✨</h1>
+          <p>Explora nuestros recuerdos</p>
+        </div>
+
+        <div id="romanticCarousel" class="rc-shell" aria-label="Carrusel de recuerdos">
+          <div class="rc-wrapper">
+            <div class="rc-track" id="rcTrack">
+              <img class="rc-img" src="assets/img/foto1.jpg" alt="Recuerdo 1">
+              <img class="rc-img" src="assets/img/foto2.jpeg" alt="Recuerdo 2">
+              <img class="rc-img" src="assets/img/foto3.jpeg" alt="Recuerdo 3">
+              <img class="rc-img" src="assets/img/foto4.jpeg" alt="Recuerdo 4">
+              <img class="rc-img" src="assets/img/foto5.jpeg" alt="Recuerdo 5">
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <button class="nextBtn" data-next aria-label="Siguiente">↓</button>
+    </section>
+
+    <section class="screen" data-screen="2">
+      <div class="starsLayer" aria-hidden="true"></div>
+      <div class="p2-wrap">
+        <div class="p2-type" id="typewriter"></div>
+        <button class="heartBtn" id="p2RevealBtn" aria-label="Mira aquí">
+          ❤ <span>Mira aquí</span>
+        </button>
+        <div class="p2-carousel" id="p2Carousel" aria-label="Carrusel de fotos">
+          <div class="p2-carousel-track">
+            <img src="assets/img/foto1.jpg" alt="Recuerdo 1">
+            <img src="assets/img/foto2.jpeg" alt="Recuerdo 2">
+            <img src="assets/img/foto3.jpeg" alt="Recuerdo 3">
+            <img src="assets/img/foto4.jpeg" alt="Recuerdo 4">
+            <img src="assets/img/foto5.jpeg" alt="Recuerdo 5">
+          </div>
+        </div>
+      </div>
+      <button class="nextBtn" data-next aria-label="Siguiente">↓</button>
+    </section>
+
+    <section class="screen" data-screen="3">
+      <div class="p3-bg">
+        <div class="p3-title">Mi corazón late solo por ti</div>
+        <div class="ekg">
+          <div class="ekg-line"></div>
+          <div class="ekg-scan"></div>
+        </div>
+        <p class="p3-sub">Escucha… esta canción siempre me recuerda a nosotros.</p>
+        <audio id="bgAudio" src="assets/audio/song.mp3" preload="auto"></audio>
+        <button class="ghostBtn" id="audioPlayBtn">▶ Activar música</button>
+      </div>
+      <button class="nextBtn" data-next aria-label="Siguiente">↓</button>
+    </section>
+
+    <section class="screen" data-screen="4">
+      <div class="p4-bg">
+        <div class="letter">
+          <h2>Para ti…</h2>
+          <p>Gracias por existir y por cada momento juntos.</p>
+          <button class="heartCta" data-next aria-label="Continuar">
+            ❤ <span>Click aquí</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="5">
+      <div class="p5-bg">
+        <div class="p5-card">
+          <h2>¿Quieres ser mi Valentine?</h2>
+          <div class="p5-actions">
+            <button class="yesBtn" id="yesBtn">❤️ Sí</button>
+            <button class="noBtn" id="noBtn">😅 No</button>
+          </div>
+          <div class="p5-celebrate" id="celebrate">
+            <div class="p5-big">AAAAA 💘</div>
+            <div class="p5-small">Sabía que dirías que sí.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="rcLightbox" class="rc-lightbox" aria-hidden="true">
+    <div class="rc-lightbox-backdrop"></div>
+    <figure class="rc-lightbox-inner">
+      <button class="rc-lightbox-close" aria-label="Cerrar">✕</button>
+      <img id="rcLbImg" src="" alt="">
+    </figure>
+  </div>
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="galaxy.js"></script>
+  <script src="carousel.js"></script> <script src="app.js"></script> </body>
+</html>
