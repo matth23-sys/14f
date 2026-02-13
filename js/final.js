@@ -67,3 +67,23 @@
         }, 3000);
     });
 })();
+
+
+// En final.js o app.js
+document.getElementById('btn-si').addEventListener('click', function(e) {
+    e.preventDefault(); // Evita la navegación inmediata si queremos lanzar confeti primero
+    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+    // Navegar después de un pequeño delay
+    setTimeout(() => {
+        document.querySelector('[data-screen="6"]').scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+});
+
+
+document.getElementById('btn-si').addEventListener('click', function(e) {
+    e.preventDefault(); // Evita el scroll inmediato por el data-next
+    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+    setTimeout(() => {
+        document.querySelector('[data-screen="6"]').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+});
